@@ -1,22 +1,28 @@
-import React from 'react';
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
-import { translations } from '../data/translations';
+import React from "react";
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { useLanguage } from "../hooks/useLanguage";
+import { translations } from "../data/translations";
 
 export const Footer: React.FC = () => {
   const { language } = useLanguage();
   const t = (key: keyof typeof translations) => translations[key][language];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
+    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Youtube, href: "#", label: "YouTube" },
   ];
 
   const partnershipLinks = [
-    { name: 'Wonderful Indonesia', href: 'https://wonderfulimages.kemenparekraf.go.id/' },
-    { name: 'Kemenparekraf', href: 'https://kemenpar.go.id/' },
+    { name: "Wonderful Indonesia", href: "https://wonderfulimages.kemenparekraf.go.id/" },
+    { name: "Kemenparekraf", href: "https://kemenpar.go.id/" },
+  ];
+
+  const teamMembers = [
+    { name: "Rizal Wira Pambudi", role: "Hustler" },
+    { name: "Farhan Alam Saputra", role: "Hacker" },
+    { name: "Musyaffa Zuhdi", role: "Hipster" },
   ];
 
   return (
@@ -34,9 +40,7 @@ export const Footer: React.FC = () => {
                 <span className="text-sm font-medium text-primary-400 leading-tight">Reality</span>
               </div>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              {t('footerDescription')}
-            </p>
+            <p className="text-gray-400 text-sm leading-relaxed mb-4">{t("footerDescription")}</p>
             <div className="space-y-2">
               <div className="flex items-center text-gray-400 text-sm">
                 <Mail className="w-4 h-4 mr-2" />
@@ -59,12 +63,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2">
               {partnershipLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-                  >
+                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
                     {link.name}
                   </a>
                 </li>
@@ -74,30 +73,33 @@ export const Footer: React.FC = () => {
 
           {/* Social Media */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">{t('socialMedia')}</h3>
+            <h3 className="text-lg font-semibold mb-4">{t("socialMedia")}</h3>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200"
-                  aria-label={social.label}
-                >
+                <a key={social.label} href={social.href} className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200" aria-label={social.label}>
                   <social.icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Additional Info */}
-          <div></div>
+          {/* Team */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Tim Kami</h3>
+            <div className="space-y-3">
+              {teamMembers.map((member) => (
+                <div key={member.name} className="text-sm">
+                  <p className="text-white font-medium">{member.name}</p>
+                  <p className="text-gray-400">{member.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 sm:mb-0">
-            © 2025 DigiMedia Reality. Seluruh hak cipta dilindungi.
-          </p>
+          <p className="text-gray-400 text-sm mb-4 sm:mb-0">© 2025 DigiMedia Reality. Seluruh hak cipta dilindungi.</p>
           <div className="flex space-x-6 text-gray-400 text-sm">
             <a href="#" className="hover:text-white transition-colors duration-200">
               Kebijakan Privasi
